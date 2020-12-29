@@ -1,0 +1,32 @@
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+
+GracefulShutdownTimeout 3
+
+<VirtualHost *:80>
+  # The ServerName directive sets the request scheme, hostname and port that
+  # the server uses to identify itself. This is used when creating
+  # redirection URLs. In the context of virtual hosts, the ServerName
+  # specifies what hostname must appear in the request's Host: header to
+  # match this virtual host. For the default virtual host (this file) this
+  # value is not decisive as it is used as a last resort host regardless.
+  # However, you must set it for any further virtual host explicitly.
+  ServerName 17paoku.zixia.net
+  ServerAlias *.17paoku.zixia.net
+
+  DocumentRoot /webroot
+  ErrorDocument 404 /404.php
+
+  ServerAdmin zixia@zixia.net
+  ErrorLog /dev/stdout
+  CustomLog /dev/stdout combined
+
+  <Location />
+          Require all granted
+  </Location>
+
+  <Directory /webroot>
+          Options FollowSymLinks
+          AllowOverride All
+  </Directory>
+
+</VirtualHost>
